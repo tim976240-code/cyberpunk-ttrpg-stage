@@ -21,7 +21,7 @@ visibility: 'PRIVATE'
 position: 'ADJACENT'
 
 # Self-explanatory.
-# tags:
+tags:
  - 'Cyberpunk'
  - 'RED'
  - '2077'
@@ -30,36 +30,6 @@ position: 'ADJACENT'
 # The schema of any user-supplied config.
 # If your stage requires a configuration but has no
 #   defined schema, it won't work.
-config_schema:
-  type: object
-  properties:
-    health:
-      type: integer
-      default: 100
-
-# The schema of the state that you store.
-# This isn't needed even if you do store state,
-#   and is here more for future use cases to
-#   optimize storage.
-state_schema:
-  init:
-    type: object
-    properties:
-      grid:
-        type: string
-  message:
-    type: object
-    properties:
-      angry:
-        type: boolean
-        default: true
-  chat:
-    type: object
-    properties:
-      visited:
-        type: array
-        items:
-          type: integer
 
 # Whether to publish as 'Anonymous' instead of under your username.
 # is_anonymous: false
