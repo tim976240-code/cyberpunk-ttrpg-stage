@@ -1,0 +1,32 @@
+name: Build and Deploy to Chub
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21.7.1'
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build stage
+        run: yarn build
+
+      - name: Deploy to Chub
+        uses: CharHubAI/stage-deploy-action@main
+        with:
+          chub_token: ${{ secrets.CHUB_AUTH_TOKEN }}
